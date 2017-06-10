@@ -49,7 +49,8 @@ sub run {
     $input = do { local $/; <$fh> };
     close $fh;
 
-    for ($input =~ /^.*\n/gm) {
+    for ($input =~ /^.*$/gm) {
+		$_ .= "\n";
         $code .= $_;
         $width = length if length > $width;
     }
